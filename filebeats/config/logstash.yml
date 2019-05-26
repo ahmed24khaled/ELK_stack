@@ -1,0 +1,17 @@
+#==========================  Modules configuration ============================
+filebeat.modules:
+
+#------------------------------- Apache2 Module ------------------------------
+- module: apache2
+  # Access logs
+  access:
+    enabled: true
+
+    # Set custom paths for the log files. If left empty,
+    # Filebeat will choose the paths depending on your OS.
+    var.paths: ["/usr/share/filebeat/logs/*"]
+
+output.elasticsearch:
+  # Array of hosts to connect to.
+  hosts: ["elasticsearch:9200"]
+  index: "filebeat-apache2"
